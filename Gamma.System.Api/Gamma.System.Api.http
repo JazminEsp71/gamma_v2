@@ -1,0 +1,6 @@
+@Gamma.System.Api_HostAddress = http://localhost:5023
+
+GET {{Gamma.System.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

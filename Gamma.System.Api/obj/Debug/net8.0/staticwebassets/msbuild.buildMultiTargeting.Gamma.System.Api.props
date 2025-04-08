@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Gamma.System.Api.props" />
+</Project>

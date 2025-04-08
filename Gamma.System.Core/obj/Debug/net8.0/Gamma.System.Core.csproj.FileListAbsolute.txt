@@ -1,0 +1,12 @@
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\bin\Debug\net8.0\Gamma.System.Core.deps.json
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\bin\Debug\net8.0\Gamma.System.Core.dll
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\bin\Debug\net8.0\Gamma.System.Core.pdb
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.AssemblyInfoInputs.cache
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.AssemblyInfo.cs
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.csproj.CoreCompileInputs.cache
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.dll
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\refint\Gamma.System.Core.dll
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.pdb
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\ref\Gamma.System.Core.dll
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.csproj.AssemblyReference.cache
