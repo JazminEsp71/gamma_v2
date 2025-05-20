@@ -10,3 +10,4 @@ C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\n
 C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.pdb
 C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\ref\Gamma.System.Core.dll
 C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.csproj.AssemblyReference.cache
+C:\Users\Jazmin Esparza\RiderProjects\Gamma.System\Gamma.System.Core\obj\Debug\net8.0\Gamma.System.Core.sourcelink.json
