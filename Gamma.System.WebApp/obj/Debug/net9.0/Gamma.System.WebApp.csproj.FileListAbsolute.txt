@@ -1,0 +1,6 @@
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.AssemblyInfoInputs.cache
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.AssemblyInfo.cs
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.csproj.CoreCompileInputs.cache
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebApp\obj\Debug\net9.0\Gamma.System.WebApp.sourcelink.json

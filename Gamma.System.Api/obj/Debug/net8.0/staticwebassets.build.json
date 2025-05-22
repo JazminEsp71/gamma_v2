@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "AwHtL4AWLX6dbeSgTvrmxoUBQ44+E/usA+W49p0ZfgI=",
+  "Hash": "mXoPNyzCnMNEbUOyBy1HotdNemGKcIXcEOsSqjTeffk=",
   "Source": "Gamma.System.Api",
   "BasePath": "_content/Gamma.System.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
