@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Api\\Gamma.System.Api.csproj": {}
+    "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Api\\Gamma.System.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Api\\Gamma.System.Api.csproj": {
+    "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Api\\Gamma.System.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Api\\Gamma.System.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Api\\Gamma.System.Api.csproj",
         "projectName": "Gamma.System.Api",
-        "projectPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Api\\Gamma.System.Api.csproj",
-        "packagesPath": "C:\\Users\\Jazmin Esparza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Api\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Api\\Gamma.System.Api.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jazmin Esparza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +28,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\Gamma.System.Core.csproj": {
-                "projectPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\Gamma.System.Core.csproj"
+              "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj"
               }
             }
           }
@@ -48,7 +50,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -90,24 +93,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\Gamma.System.Core.csproj": {
+    "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\Gamma.System.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj",
         "projectName": "Gamma.System.Core",
-        "projectPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\Gamma.System.Core.csproj",
-        "packagesPath": "C:\\Users\\Jazmin Esparza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\Gamma.System\\Gamma.System.Core\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jazmin Esparza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -116,7 +121,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -134,7 +139,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -161,7 +167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
