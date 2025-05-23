@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using Gamma.System.Core.Dto;
+using Gamma.System.Core.Http;
 
 namespace Gamma.System.WebSite.Services;
 
@@ -46,5 +47,46 @@ public class ApiService
             Console.WriteLine($"Excepción al autenticar: {ex.Message}");
             return null;
         }
+    }
+    //ordenes
+    public async Task<List<OrdenesDto>> GetOrdenes()
+    {
+        var client = _httpClientFactory.CreateClient("GammaAPI");
+        var response = await client.GetFromJsonAsync<Response<List<OrdenesDto>>>("api/ordenes");
+        return response?.Data ?? new List<OrdenesDto>();
+    }
+
+    public async Task<OrdenesDto> GetOrdenById(int id)
+    {
+        var client = _httpClientFactory.CreateClient("GammaAPI");
+        var response = await client.GetFromJsonAsync<Response<OrdenesDto>>($"api/ordenes/{id}");
+        return response?.Data;
+    }
+
+    public async Task<OrdenesDto> CreateOrden(OrdenesDto orden)
+    {
+        var client = _httpClientFactory.CreateClient("GammaAPI");
+        var response = await client.PostAsJsonAsync("api/ordenes", orden);
+    
+        if (response.IsSuccessStatusCode)
+        {
+            return await response.Content.ReadFromJsonAsync<Response<OrdenesDto>>().ContinueWith(t => t.Result?.Data);
+        }
+    
+        return null;
+    }
+
+    public async Task<bool> UpdateOrden(OrdenesDto orden)
+    {
+        var client = _httpClientFactory.CreateClient("GammaAPI");
+        var response = await client.PutAsJsonAsync("api/ordenes", orden);
+        return response.IsSuccessStatusCode;
+    }
+
+    public async Task<bool> DeleteOrden(int id)
+    {
+        var client = _httpClientFactory.CreateClient("GammaAPI");
+        var response = await client.DeleteAsync($"api/ordenes/{id}");
+        return response.IsSuccessStatusCode;
     }
 }

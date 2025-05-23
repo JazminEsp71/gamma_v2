@@ -2,20 +2,23 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-// Toggle sidebar
-document.addEventListener('DOMContentLoaded', () => {
-    const sidebarCollapse = document.getElementById('sidebarCollapse');
-    const sidebar = document.getElementById('sidebar');
+// Toggle del sidebar
+$(document).ready(function () {
+    $('#sidebarToggle').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        $('.main-content').toggleClass('sidebar-collapsed');
 
-    if (sidebarCollapse && sidebar) {
-        sidebarCollapse.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
-    }
+        // Ajustar el margen del contenido principal
+        if ($('#sidebar').hasClass('active')) {
+            $('.main-content').css('margin-left', '250px');
+        } else {
+            $('.main-content').css('margin-left', '0');
+        }
+    });
 
     // Activar tooltips
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
+    $('[data-bs-toggle="tooltip"]').tooltip();
+
+    // Activar popovers
+    $('[data-bs-toggle="popover"]').popover();
 });

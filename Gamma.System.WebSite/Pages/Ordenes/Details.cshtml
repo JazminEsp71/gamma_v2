@@ -1,0 +1,57 @@
+@page "{id:int}"
+@model Gamma.System.WebSite.Pages.Ordenes.DetailsModel
+@{
+    ViewData["Title"] = "Detalles de Orden";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@ViewData["Title"]</h2>
+        <a asp-page="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9">@Model.Orden.Id</dd>
+
+                <dt class="col-sm-3">ID Cliente:</dt>
+                <dd class="col-sm-9">@Model.Orden.IdCliente</dd>
+
+                <dt class="col-sm-3">ID Modelo:</dt>
+                <dd class="col-sm-9">@Model.Orden.IdModelo</dd>
+
+                <dt class="col-sm-3">Estado:</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @GetEstadoBadgeClass(Model.Orden.Estado)">@Model.Orden.Estado</span>
+                </dd>
+
+                <dt class="col-sm-3">Número de Lote:</dt>
+                <dd class="col-sm-9">@Model.Orden.Lote</dd>
+            </dl>
+
+            <div class="mt-4">
+                <a asp-page="Edit" asp-route-id="@Model.Orden.Id" class="btn btn-warning">
+                    <i class="bi bi-pencil"></i> Editar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetEstadoBadgeClass(string estado)
+    {
+        return estado switch
+        {
+            "Pendiente" => "bg-secondary",
+            "En Producción" => "bg-primary",
+            "Completado" => "bg-success",
+            "Cancelado" => "bg-danger",
+            _ => "bg-light text-dark"
+        };
+    }
+}
