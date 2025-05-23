@@ -1,10 +1,23 @@
-var builder = WebApplication.CreateBuilder(args);
+using Gamma.System.WebSite.Services;
 
+var builder = WebApplication.CreateBuilder(args);
+// Configuración del HttpClient
+builder.Services.AddHttpClient("GammaAPI", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"]);
+});
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddSession();
+builder.Services.AddScoped<ApiService>();
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -20,6 +33,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+app.UseSession(); 
 app.MapRazorPages()
     .WithStaticAssets();
 
