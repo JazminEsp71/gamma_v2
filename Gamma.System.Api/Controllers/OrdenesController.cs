@@ -36,6 +36,7 @@ public class OrdenesController : ControllerBase
         var ordenes = new Ordenes()
         {
             IdCliente = ordenesDto.IdCliente,
+            IdModelo = ordenesDto.IdModelo,
             Id = ordenesDto.Id,
             Estado = ordenesDto.Estado,
             Lote = ordenesDto.Lote

@@ -5,14 +5,30 @@ namespace Gamma.System.WebSite.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    private readonly AuthService _authService;
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(AuthService authService)
     {
-        _logger = logger;
+        _authService = authService;
     }
 
-    public void OnGet()
+    [BindProperty]
+    public string Usuario { get; set; }
+
+    [BindProperty]
+    public string Password { get; set; }
+
+    public bool LoginFallido { get; set; }
+
+    public void OnGet() { }
+
+    public async Task<IActionResult> OnPostAsync()
     {
+        var valido = await _authService.ValidarUsuarioAsync(Usuario, Password);
+        if (valido)
+            return RedirectToPage("Home");
+
+        LoginFallido = true;
+        return Page();
     }
 }

@@ -17,9 +17,16 @@ public class OrdenesRepository : IOrdenesRepository
 
     public async Task<Ordenes> SaveAsync(Ordenes ordenes)
     {
-        ordenes.Id = await _dbcontext.Connection.InsertAsync(ordenes);
+        var connection = _dbcontext.Connection;
+        await connection.OpenAsync();
+
+        ordenes.Id = await connection.InsertAsync(ordenes);
+
+        await connection.CloseAsync();
         return ordenes;
     }
+
+
 
     public async Task<Ordenes> UpdateAsync (Ordenes ordenes)
     {
