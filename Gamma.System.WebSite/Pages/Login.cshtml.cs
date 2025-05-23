@@ -7,38 +7,14 @@ namespace Gamma.System.WebSite.Pages;
 
 public class Login : PageModel
 {
-    private readonly ApiService _apiService;
-
-    public Login(ApiService apiService)
-    {
-        _apiService = apiService;
-    }
-
-    [BindProperty]
-    public UsuariosDto Usuario { get; set; }
-
     public void OnGet()
     {
+        // Método GET vacío
     }
 
-    public async Task<IActionResult> OnPostAsync()
+    public IActionResult OnPost()
     {
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
-
-        var response = await _apiService.Login(Usuario);
-
-        if (response.IsSuccessStatusCode)
-        {
-            var usuario = await response.Content.ReadFromJsonAsync<UsuariosDto>();
-            HttpContext.Session.SetString("UsuarioId", usuario.IdUsuario.ToString());
-            HttpContext.Session.SetString("NombreUsuario", usuario.Nombre);
-            return RedirectToPage("/Index");
-        }
-
-        ModelState.AddModelError(string.Empty, "Credenciales inválidas");
-        return Page();
+        // Redirigir directamente al Index sin validar credenciales
+        return RedirectToPage("/Index");
     }
 }

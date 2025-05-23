@@ -19,6 +19,32 @@ public class ApiService
         var client = _httpClientFactory.CreateClient("GammaAPI");
         return await client.PostAsJsonAsync("api/usuarios/login", usuario);
     }
+// En Services/ApiService.cs
+    public async Task<UsuariosDto?> Authenticate(string correo, string contrasena)
+    {
+        var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+    
+        try
+        {
+            var response = await client.PostAsJsonAsync("api/usuarios", new {
+                Correo = correo,
+                Contrasena = contrasena
+            });
 
-    // Agregar más métodos para otros endpoints según necesites
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<UsuariosDto>();
+            }
+        
+            // Si la respuesta no es exitosa, leer el mensaje de error
+            var errorContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error en autenticación: {errorContent}");
+            return null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Excepción al autenticar: {ex.Message}");
+            return null;
+        }
+    }
 }

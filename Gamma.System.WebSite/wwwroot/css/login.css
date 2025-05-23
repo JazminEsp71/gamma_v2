@@ -1,0 +1,38 @@
+body {
+    background-color: #f8f9fa;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+    padding: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #3a5ec0;
+    border-color: #3a5ec0;
+}
+
+.form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}

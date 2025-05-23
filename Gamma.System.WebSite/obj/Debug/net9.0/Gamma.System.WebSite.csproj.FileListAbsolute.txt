@@ -54,9 +54,7 @@ C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\Gamm
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\scopedcss\bundle\Gamma.System.WebSite.styles.css
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\scopedcss\projectbundle\Gamma.System.WebSite.bundle.scp.css
-C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\wmkumzjq57-b9sayid5wm.gz
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\fkk2s1ces2-61n19gt1b8.gz
-C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\uok9kx8jgx-xtxxf3hu2r.gz
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\i1i2riytm2-t1cqhe9u97.gz
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\nl460prhvq-c2jlpeoesf.gz
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\5eax9coyb0-sejl45xvog.gz
@@ -133,3 +131,6 @@ C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\refi
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\Gamma.System.WebSite.pdb
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\Gamma.System.WebSite.genruntimeconfig.cache
 C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\ref\Gamma.System.WebSite.dll
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\oef77a6llu-etz8xnjw0p.gz
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\wmkumzjq57-2k3ognk2d2.gz
+C:\Users\Diego\Desktop\Repos\gamma_v2\Gamma.System.WebSite\obj\Debug\net9.0\compressed\uok9kx8jgx-9o2yp1q3ct.gz
