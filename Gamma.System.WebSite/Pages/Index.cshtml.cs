@@ -1,3 +1,4 @@
+using Gamma.System.WebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,22 +14,23 @@ public class IndexModel : PageModel
     }
 
     [BindProperty]
-    public string Usuario { get; set; }
+    public string nombre { get; set; }
 
     [BindProperty]
-    public string Password { get; set; }
-
+    public string contrasena { get; set; }
     public bool LoginFallido { get; set; }
-
-    public void OnGet() { }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var valido = await _authService.ValidarUsuarioAsync(Usuario, Password);
-        if (valido)
-            return RedirectToPage("Home");
+        var usuarioValido = await _authService.ValidarUsuarioAsync(nombre, contrasena);
 
-        LoginFallido = true;
-        return Page();
+        if (!usuarioValido)
+        {
+            ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos");
+            return Page();
+        }
+
+        // Aquí ya puedes redirigir a la vista con los 5 apartados
+        return RedirectToPage("/Dashboard");
     }
 }

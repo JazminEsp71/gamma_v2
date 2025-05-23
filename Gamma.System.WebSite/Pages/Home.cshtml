@@ -1,0 +1,18 @@
+@page
+@model Gamma.System.WebSite.Pages.Home
+
+@{
+    ViewData["Title"] = "Panel Principal";
+}
+
+<h2>Panel de administración</h2>
+
+<div>
+    <ul>
+        <li><a asp-page="/Ordenes">📦 Órdenes</a></li>
+        <li><a asp-page="/Clientes">👥 Clientes</a></li>
+        <li><a asp-page="/Maquinas">🛠️ Máquinas</a></li>
+        <li><a asp-page="/Modelos">📐 Modelos</a></li>
+        <li><a asp-page="/Colores">🎨 Colores</a></li>
+    </ul>
+</div>
