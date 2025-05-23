@@ -48,45 +48,100 @@ public class ApiService
             return null;
         }
     }
+    public async Task<string> TestApiConnection()
+    {
+        try
+        {
+            var client = _httpClientFactory.CreateClient("GammaAPI");
+            var response = await client.GetAsync("apiOrdenes");
+        
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return $"Conexión exitosa! Respuesta: {content}";
+            }
+        
+            return $"Error en la API: {response.StatusCode}";
+        }
+        catch (Exception ex)
+        {
+            return $"Error de conexión: {ex.Message}";
+        }
+    }
     //ordenes
     public async Task<List<OrdenesDto>> GetOrdenes()
     {
-        var client = _httpClientFactory.CreateClient("GammaAPI");
-        var response = await client.GetFromJsonAsync<Response<List<OrdenesDto>>>("api/ordenes");
-        return response?.Data ?? new List<OrdenesDto>();
+        try
+        {
+            var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+            var response = await client.GetAsync("apiOrdenes");
+        
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadFromJsonAsync<Response<List<OrdenesDto>>>();
+                return apiResponse?.Data ?? new List<OrdenesDto>();
+            }
+            return new List<OrdenesDto>();
+        }
+        catch (Exception ex)
+        {
+            return new List<OrdenesDto>();
+        }
     }
 
     public async Task<OrdenesDto> GetOrdenById(int id)
     {
-        var client = _httpClientFactory.CreateClient("GammaAPI");
-        var response = await client.GetFromJsonAsync<Response<OrdenesDto>>($"api/ordenes/{id}");
-        return response?.Data;
+        try
+        {
+            var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+            var response = await client.GetAsync($"apiOrdenes/{id}");
+        
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadFromJsonAsync<Response<OrdenesDto>>();
+                return apiResponse?.Data;
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
     }
 
-    public async Task<OrdenesDto> CreateOrden(OrdenesDto orden)
+    public async Task<bool> CreateOrden(OrdenesDto orden)
     {
-        var client = _httpClientFactory.CreateClient("GammaAPI");
-        var response = await client.PostAsJsonAsync("api/ordenes", orden);
-    
-        if (response.IsSuccessStatusCode)
+        try
         {
-            return await response.Content.ReadFromJsonAsync<Response<OrdenesDto>>().ContinueWith(t => t.Result?.Data);
+            var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+            var response = await client.PostAsJsonAsync("apiOrdenes", orden);
+        
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+        
+            var errorContent = await response.Content.ReadAsStringAsync();
+            return false;
         }
-    
-        return null;
+        catch (Exception ex)
+        {
+            return false;
+        }
     }
 
     public async Task<bool> UpdateOrden(OrdenesDto orden)
     {
-        var client = _httpClientFactory.CreateClient("GammaAPI");
-        var response = await client.PutAsJsonAsync("api/ordenes", orden);
+        var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+        var response = await client.PutAsJsonAsync("apiOrdenes", orden);
         return response.IsSuccessStatusCode;
     }
 
     public async Task<bool> DeleteOrden(int id)
     {
-        var client = _httpClientFactory.CreateClient("GammaAPI");
-        var response = await client.DeleteAsync($"api/ordenes/{id}");
+        var client = _httpClientFactory.CreateClient("Gamma.System.Api");
+        var response = await client.DeleteAsync($"apiOrdenes/{id}");
         return response.IsSuccessStatusCode;
     }
+    
 }

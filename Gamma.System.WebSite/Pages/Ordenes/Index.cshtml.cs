@@ -8,10 +8,12 @@ namespace Gamma.System.WebSite.Pages.Ordenes;
 public class IndexModel : PageModel
 {
     private readonly ApiService _apiService;
+    private readonly ILogger<IndexModel> _logger;
 
-    public IndexModel(ApiService apiService)
+    public IndexModel(ApiService apiService, ILogger<IndexModel> logger)
     {
         _apiService = apiService;
+        _logger = logger;
     }
 
     public List<OrdenesDto> Ordenes { get; set; } = new();
@@ -21,13 +23,20 @@ public class IndexModel : PageModel
         try
         {
             Ordenes = await _apiService.GetOrdenes();
-            return Page();
+            
+            if (Ordenes == null || Ordenes.Count == 0)
+            {
+                _logger.LogWarning("No se encontraron órdenes o la lista está vacía");
+                TempData["WarningMessage"] = "No se encontraron órdenes registradas.";
+            }
         }
         catch (Exception ex)
         {
-            ModelState.AddModelError(string.Empty, $"Error al cargar órdenes: {ex.Message}");
+            _logger.LogError(ex, "Error al obtener órdenes");
+            TempData["ErrorMessage"] = "Error al cargar las órdenes. Por favor intente nuevamente.";
             Ordenes = new List<OrdenesDto>();
-            return Page();
         }
+
+        return Page();
     }
 }

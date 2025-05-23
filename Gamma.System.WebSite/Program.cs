@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using Gamma.System.WebSite.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient("GammaAPI", client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"]);
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue("application/json"));
 });
 // Add services to the container.
 builder.Services.AddRazorPages();
