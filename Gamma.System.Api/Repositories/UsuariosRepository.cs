@@ -56,4 +56,18 @@ public class UsuariosRepository : IUsuariosRepository
             return null;
         return usuarios.IsDeleted == true ? null : usuarios;
     }
+    public async Task<Usuarios> GetByEmailAsync(string correo)
+    {
+        const string sql = "SELECT * FROM Usuarios WHERE Correo = @Correo AND IsDeleted = 0";
+        return await _dbcontext.Connection.QueryFirstOrDefaultAsync<Usuarios>(sql, new { Correo = correo });
+    }
+
+    public async Task<bool> VerifyPasswordAsync(string correo, string contrasena)
+    {
+        var usuario = await GetByEmailAsync(correo);
+        if (usuario == null) return false;
+    
+        // En producción usa BCrypt para comparar contraseñas hasheadas
+        return usuario.Contrasena == contrasena; // Solo para desarrollo!
+    }
 }

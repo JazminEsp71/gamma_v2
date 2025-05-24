@@ -100,5 +100,27 @@ public class UsuariosController : ControllerBase
         
         return Ok(response);
     }
+    [HttpPost("authenticate")]
+    public async Task<ActionResult<Response<UsuariosDto>>> Authenticate([FromBody] LoginRequest request)
+    {
+        var response = new Response<UsuariosDto>();
+    
+        var usuario = await _usuariosRepository.GetByEmailAsync(request.Correo);
+    
+        if (usuario == null || !await _usuariosRepository.VerifyPasswordAsync(request.Correo, request.Contrasena))
+        {
+            response.Errors.Add("Credenciales inválidas");
+            return Unauthorized(response);
+        }
+    
+        response.Data = new UsuariosDto(usuario);
+        return Ok(response);
+    }
+
+    public class LoginRequest
+    {
+        public string Correo { get; set; }
+        public string Contrasena { get; set; }
+    }
     
 }

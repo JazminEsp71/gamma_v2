@@ -18,4 +18,6 @@ public interface IUsuariosRepository
     
     //Metodo para obtener una categoria por el id
     Task<Usuarios> GetById(int IdUsuario);
+    Task<Usuarios> GetByEmailAsync(string correo);
+    Task<bool> VerifyPasswordAsync(string correo, string contrasena);
 }

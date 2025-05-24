@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lhSpxmmFxL8=",
+  "dgSpecHash": "Oy6Pj/+QtK4=",
   "success": true,
   "projectFilePath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.WebSite\\Gamma.System.WebSite.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Diego\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\10.0.0-preview.4.25258.110\\microsoft.aspnetcore.identity.ui.10.0.0-preview.4.25258.110.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",

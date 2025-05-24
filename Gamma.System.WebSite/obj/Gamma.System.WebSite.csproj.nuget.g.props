@@ -14,4 +14,7 @@
     <SourceRoot Include="C:\Program Files\DevExpress 23.2\Components\Offline Packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\10.0.0-preview.4.25258.110\build\Microsoft.AspNetCore.Identity.UI.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\10.0.0-preview.4.25258.110\build\Microsoft.AspNetCore.Identity.UI.props')" />
+  </ImportGroup>
 </Project>
