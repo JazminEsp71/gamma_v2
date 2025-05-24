@@ -1,19 +1,64 @@
 @page
-@model Gamma.System.WebSite.Pages.Modelos.Edit
+@model Gamma.System.WebSite.Pages.Modelos.EditModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>@(Model.Modelo.IdModelo == 0 ? "Nuevo Modelo" : "Editar Modelo")</h2>
+        </div>
+    </div>
 
-<!DOCTYPE html>
+    <form method="post">
+        <input type="hidden" asp-for="Modelo.IdModelo" />
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Modelo.Nombre" class="form-label">Nombre</label>
+                <input asp-for="Modelo.Nombre" class="form-control" />
+                <span asp-validation-for="Modelo.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Modelo.CodigoSuela" class="form-label">Código Suela</label>
+                <input asp-for="Modelo.CodigoSuela" class="form-control" />
+                <span asp-validation-for="Modelo.CodigoSuela" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Modelo.CorridaNumerica" class="form-label">Corrida Numérica</label>
+                <input asp-for="Modelo.CorridaNumerica" class="form-control" />
+                <span asp-validation-for="Modelo.CorridaNumerica" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-check mt-4 pt-2">
+                    <input asp-for="Modelo.Burbuja" class="form-check-input" />
+                    <label asp-for="Modelo.Burbuja" class="form-check-label">Burbuja</label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="Modelo.Injerto" class="form-check-input" />
+                    <label asp-for="Modelo.Injerto" class="form-check-label">Injerto</label>
+                </div>
+
+                <div class="form-check">
+                    <input asp-for="Modelo.Plastisol" class="form-check-input" />
+                    <label asp-for="Modelo.Plastisol" class="form-check-label">Plastisol</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </form>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

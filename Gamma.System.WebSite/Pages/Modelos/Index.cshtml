@@ -1,19 +1,44 @@
 @page
-@model Gamma.System.WebSite.Pages.Modelos.Index
+@model Gamma.System.WebSite.Pages.Modelos.IndexModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Listado de Modelos</h2>
+        <a asp-page="./Edit" class="btn btn-success">Nuevo Modelo</a>
+    </div>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Código Suela</th>
+                <th>Corrida Numérica</th>
+                <th>Características</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var modelo in Model.Modelos)
+            {
+                <tr>
+                    <td>@modelo.IdModelo</td>
+                    <td>@modelo.Nombre</td>
+                    <td>@modelo.CodigoSuela</td>
+                    <td>@modelo.CorridaNumerica</td>
+                    <td>
+                        @if (modelo.Burbuja) { <span class="badge bg-primary me-1">Burbuja</span> }
+                        @if (modelo.Injerto) { <span class="badge bg-success me-1">Injerto</span> }
+                        @if (modelo.Plastisol) { <span class="badge bg-warning">Plastisol</span> }
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@modelo.IdModelo" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-page="./Delete" asp-route-id="@modelo.IdModelo" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
-</body>
-</html>

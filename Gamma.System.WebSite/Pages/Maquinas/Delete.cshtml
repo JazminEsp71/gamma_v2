@@ -1,8 +1,9 @@
 @page
-@model Gamma.System.WebSite.Pages.Maquinas.DetailsModel
+@model Gamma.System.WebSite.Pages.Maquinas.DeleteModel
 
 <div class="container-fluid">
-    <h2>Detalles de la Máquina</h2>
+    <h2>Eliminar Máquina</h2>
+    <h3>¿Está seguro que desea eliminar esta máquina?</h3>
 
     <div class="card mt-3">
         <div class="card-body">
@@ -20,21 +21,17 @@
                 <dd class="col-sm-9">@Model.Maquina.Operador2</dd>
 
                 <dt class="col-sm-3">Estado:</dt>
-                <dd class="col-sm-9">
-                    <span class="badge @(Model.Maquina.Estado == "Disponible" ? "bg-success" :
-                                       Model.Maquina.Estado == "En uso" ? "bg-warning" : "bg-danger")">
-                        @Model.Maquina.Estado
-                    </span>
-                </dd>
+                <dd class="col-sm-9">@Model.Maquina.Estado</dd>
 
                 <dt class="col-sm-3">Capacidad Máxima:</dt>
                 <dd class="col-sm-9">@Model.Maquina.CapacidadMaxima</dd>
             </dl>
 
-            <div>
-                <a asp-page="./Edit" asp-route-id="@Model.Maquina.Id" class="btn btn-primary">Editar</a>
-                <a asp-page="./Index" class="btn btn-secondary">Volver al listado</a>
-            </div>
+            <form method="post">
+                <input type="hidden" asp-for="Maquina.Id" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
     </div>
 </div>

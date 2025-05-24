@@ -5,15 +5,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Gamma.System.WebSite.Pages.Maquinas;
 
-public class DetailsModel : PageModel
+public class DeleteModel : PageModel
 {
     private readonly IMaquinasService _maquinasService;
 
-    public DetailsModel(IMaquinasService maquinasService)
+    public DeleteModel(IMaquinasService maquinasService)
     {
         _maquinasService = maquinasService;
     }
 
+    [BindProperty]
     public MaquinasDto Maquina { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync(int id)
@@ -26,5 +27,11 @@ public class DetailsModel : PageModel
 
         Maquina = response.Data;
         return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        await _maquinasService.DeleteAsync(Maquina.Id);
+        return RedirectToPage("./Index");
     }
 }

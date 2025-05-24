@@ -76,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFxdWluYXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Diego/Desktop/Repos/gamma_v2/Gamma.System.WebSite/Pages/Maquinas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFxdWluYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Diego/Desktop/Repos/gamma_v2/Gamma.System.WebSite/Pages/Maquinas/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFxdWluYXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +94,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Diego/Desktop/Repos/gamma_v2/Gamma.System.WebSite/Pages/Modelos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWxvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Diego/Desktop/Repos/gamma_v2/Gamma.System.WebSite/Pages/Modelos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZWxvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Diego/Desktop/Repos/gamma_v2/Gamma.System.WebSite/Pages/Modelos/Details.cshtml]

@@ -1,19 +1,65 @@
 @page
-@model Gamma.System.WebSite.Pages.Maquinas.Edit
+@model Gamma.System.WebSite.Pages.Maquinas.EditModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>@(Model.Maquina.Id == 0 ? "Nueva Máquina" : "Editar Máquina")</h2>
+        </div>
+    </div>
 
-<!DOCTYPE html>
+    <form method="post">
+        <input type="hidden" asp-for="Maquina.Id" />
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Maquina.Nombre" class="form-label">Nombre</label>
+                <input asp-for="Maquina.Nombre" class="form-control" />
+                <span asp-validation-for="Maquina.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Maquina.Estado" class="form-label">Estado</label>
+                <select asp-for="Maquina.Estado" class="form-select">
+                    <option value="Disponible">Disponible</option>
+                    <option value="En uso">En uso</option>
+                    <option value="Mantenimiento">Mantenimiento</option>
+                </select>
+                <span asp-validation-for="Maquina.Estado" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Maquina.Operador1" class="form-label">Operador 1</label>
+                <input asp-for="Maquina.Operador1" class="form-control" />
+                <span asp-validation-for="Maquina.Operador1" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Maquina.Operador2" class="form-label">Operador 2</label>
+                <input asp-for="Maquina.Operador2" class="form-control" />
+                <span asp-validation-for="Maquina.Operador2" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Maquina.CapacidadMaxima" class="form-label">Capacidad Máxima</label>
+                <input asp-for="Maquina.CapacidadMaxima" class="form-control" type="number" />
+                <span asp-validation-for="Maquina.CapacidadMaxima" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </form>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

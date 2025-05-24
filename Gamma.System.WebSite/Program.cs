@@ -14,6 +14,8 @@ builder.Services.AddHttpClient("GammaAPI", client =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IOrdenesService, OrdenesService>();
+builder.Services.AddScoped<IModelosService, ModelosService>();
+builder.Services.AddScoped<IMaquinasService, MaquinasService>();
 builder.Services.AddSession();
 builder.Services.AddScoped<ApiService>();
 builder.Services.AddHttpContextAccessor();
