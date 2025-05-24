@@ -1,19 +1,41 @@
 @page
-@model Gamma.System.WebSite.Pages.Colores.Delete
+@model Gamma.System.WebSite.Pages.Colores.DeleteModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <h2>Eliminar Color</h2>
+    <h3>¿Está seguro que desea eliminar este color?</h3>
 
-<!DOCTYPE html>
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Error"]
+        </div>
+    }
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9">@Model.Color.Id</dd>
+
+                <dt class="col-sm-3">Código:</dt>
+                <dd class="col-sm-9">@Model.Color.CodigoColor</dd>
+
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">@Model.Color.Nombre</dd>
+
+                <dt class="col-sm-3">Pigmento:</dt>
+                <dd class="col-sm-9">@Model.Color.CodigoPigmento</dd>
+
+                <dt class="col-sm-3">Base:</dt>
+                <dd class="col-sm-9">@Model.Color.BaseMaterial</dd>
+            </dl>
+
+            <form method="post">
+                <input type="hidden" asp-for="Color.Id" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
 </div>
-</body>
-</html>

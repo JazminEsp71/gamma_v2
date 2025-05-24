@@ -3,30 +3,30 @@ using Gamma.System.WebSite.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Gamma.System.WebSite.Pages.Colores;
+namespace Gamma.System.WebSite.Pages.Clientes;
 
 public class DeleteModel : PageModel
 {
-    private readonly IColoresService _coloresService;
+    private readonly IClientesService _clientesService;
 
-    public DeleteModel(IColoresService coloresService)
+    public DeleteModel(IClientesService clientesService)
     {
-        _coloresService = coloresService;
+        _clientesService = clientesService;
     }
 
     [BindProperty]
-    public ColoresDto Color { get; set; } = new();
+    public ClientesDto Cliente { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
-        var response = await _coloresService.GetByIdAsync(id);
+        var response = await _clientesService.GetByIdAsync(id);
         if (response.Data == null)
         {
-            TempData["Error"] = "Color no encontrado";
+            TempData["Error"] = "Cliente no encontrado";
             return RedirectToPage("./Index");
         }
 
-        Color = response.Data;
+        Cliente = response.Data;
         return Page();
     }
 
@@ -34,7 +34,7 @@ public class DeleteModel : PageModel
     {
         try
         {
-            var response = await _coloresService.DeleteAsync(Color.Id);
+            var response = await _clientesService.DeleteAsync(Cliente.IdCliente);
             
             if (response.Errors != null && response.Errors.Any())
             {
@@ -42,7 +42,7 @@ public class DeleteModel : PageModel
                 return Page();
             }
 
-            TempData["Success"] = "Color eliminado correctamente";
+            TempData["Success"] = "Cliente eliminado correctamente";
             return RedirectToPage("./Index");
         }
         catch (Exception ex)

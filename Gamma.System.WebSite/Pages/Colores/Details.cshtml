@@ -1,19 +1,44 @@
 @page
-@model Gamma.System.WebSite.Pages.Colores.Details
+@model Gamma.System.WebSite.Pages.Colores.DetailsModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <h2>Detalles del Color</h2>
 
-<!DOCTYPE html>
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9">@Model.Color.Id</dd>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+                <dt class="col-sm-3">Código Color:</dt>
+                <dd class="col-sm-9">@Model.Color.CodigoColor</dd>
+
+                <dt class="col-sm-3">Nombre:</dt>
+                <dd class="col-sm-9">@Model.Color.Nombre</dd>
+
+                <dt class="col-sm-3">Código Pigmento:</dt>
+                <dd class="col-sm-9">@Model.Color.CodigoPigmento</dd>
+
+                <dt class="col-sm-3">Base Material:</dt>
+                <dd class="col-sm-9">@Model.Color.BaseMaterial</dd>
+
+                <dt class="col-sm-3">Gramos por Kg:</dt>
+                <dd class="col-sm-9">@Model.Color.GramosPorKg</dd>
+
+                <dt class="col-sm-3">Código Bulto:</dt>
+                <dd class="col-sm-9">@Model.Color.CodigoBulto</dd>
+
+                <dt class="col-sm-3">Kg por Bulto:</dt>
+                <dd class="col-sm-9">@Model.Color.KgPorBulto</dd>
+
+                <dt class="col-sm-3">Gramos por Bulto:</dt>
+                <dd class="col-sm-9">@Model.Color.GramosPorBulto</dd>
+            </dl>
+
+            <div>
+                <a asp-page="./Edit" asp-route-id="@Model.Color.Id" class="btn btn-primary">Editar</a>
+                <a asp-page="./Index" class="btn btn-secondary">Volver al listado</a>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
-</html>

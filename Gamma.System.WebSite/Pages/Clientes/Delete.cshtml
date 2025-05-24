@@ -1,8 +1,16 @@
 @page
-@model Gamma.System.WebSite.Pages.Clientes.DetailsModel
+@model Gamma.System.WebSite.Pages.Clientes.DeleteModel
 
 <div class="container-fluid">
-    <h2>Detalles del Cliente</h2>
+    <h2>Eliminar Cliente</h2>
+    <h3>¿Está seguro que desea eliminar este cliente?</h3>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Error"]
+        </div>
+    }
 
     <div class="card mt-3">
         <div class="card-body">
@@ -20,10 +28,11 @@
                 <dd class="col-sm-9">@Model.Cliente.Direccion</dd>
             </dl>
 
-            <div>
-                <a asp-page="./Edit" asp-route-id="@Model.Cliente.IdCliente" class="btn btn-primary">Editar</a>
-                <a asp-page="./Index" class="btn btn-secondary">Volver al listado</a>
-            </div>
+            <form method="post">
+                <input type="hidden" asp-for="Cliente.IdCliente" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
     </div>
 </div>

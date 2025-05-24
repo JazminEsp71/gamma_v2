@@ -1,19 +1,91 @@
 @page
-@model Gamma.System.WebSite.Pages.Colores.Edit
+@model Gamma.System.WebSite.Pages.Colores.EditModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>@(Model.Color.Id == 0 ? "Nuevo Color" : "Editar Color")</h2>
+        </div>
+    </div>
 
-<!DOCTYPE html>
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Error"]
+        </div>
+    }
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+    <form method="post">
+        <input type="hidden" asp-for="Color.Id" />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Color.CodigoColor" class="form-label">Código Color</label>
+                <input asp-for="Color.CodigoColor" class="form-control" />
+                <span asp-validation-for="Color.CodigoColor" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Color.Nombre" class="form-label">Nombre</label>
+                <input asp-for="Color.Nombre" class="form-control" />
+                <span asp-validation-for="Color.Nombre" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Color.CodigoPigmento" class="form-label">Código Pigmento</label>
+                <input asp-for="Color.CodigoPigmento" class="form-control" />
+                <span asp-validation-for="Color.CodigoPigmento" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Color.BaseMaterial" class="form-label">Base Material</label>
+                <select asp-for="Color.BaseMaterial" class="form-select">
+                    <option value="Cristal">Cristal</option>
+                    <option value="Natural">Natural</option>
+                </select>
+                <span asp-validation-for="Color.BaseMaterial" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label asp-for="Color.GramosPorKg" class="form-label">Gramos por Kg</label>
+                <input asp-for="Color.GramosPorKg" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Color.GramosPorKg" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="Color.CodigoBulto" class="form-label">Código Bulto</label>
+                <input asp-for="Color.CodigoBulto" class="form-control" />
+                <span asp-validation-for="Color.CodigoBulto" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="Color.KgPorBulto" class="form-label">Kg por Bulto</label>
+                <input asp-for="Color.KgPorBulto" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Color.KgPorBulto" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Color.GramosPorBulto" class="form-label">Gramos por Bulto</label>
+                <input asp-for="Color.GramosPorBulto" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Color.GramosPorBulto" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </form>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

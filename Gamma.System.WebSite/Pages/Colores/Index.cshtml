@@ -1,19 +1,55 @@
 @page
-@model Gamma.System.WebSite.Pages.Colores.Index
+@model Gamma.System.WebSite.Pages.Colores.IndexModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Listado de Colores</h2>
+        <a asp-page="./Edit" class="btn btn-success">Nuevo Color</a>
+    </div>
 
-<!DOCTYPE html>
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["Error"]
+        </div>
+    }
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Pigmento</th>
+                <th>Base</th>
+                <th>Gramos/Kg</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var color in Model.Colores)
+            {
+                <tr>
+                    <td>@color.CodigoColor</td>
+                    <td>@color.Nombre</td>
+                    <td>@color.CodigoPigmento</td>
+                    <td>@color.BaseMaterial</td>
+                    <td>@color.GramosPorKg</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@color.Id" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-page="./Delete" asp-route-id="@color.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                        <a asp-page="./Details" asp-route-id="@color.Id" class="btn btn-sm btn-info">Detalles</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
-</body>
-</html>
