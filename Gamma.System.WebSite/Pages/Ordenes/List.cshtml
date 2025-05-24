@@ -1,0 +1,62 @@
+@page
+@model Gamma.System.WebSite.Pages.Ordenes.ListModel
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>Listado de Órdenes</h2>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-page="./Edit" class="btn btn-success">Nueva Orden</a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>ID Cliente</th>
+                <th>ID Modelo</th>
+                <th>Estado</th>
+                <th>Lote</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var orden in Model.Ordenes)
+            {
+                <tr>
+                    <td>@orden.Id</td>
+                    <td>@orden.IdCliente</td>
+                    <td>@orden.IdModelo</td>
+                    <td>
+                        <span class="badge @GetEstadoBadge(orden.Estado)">
+                            @orden.Estado
+                        </span>
+                    </td>
+                    <td>@orden.Lote</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@orden.Id" class="btn btn-sm btn-primary">Editar</a>
+                        <a asp-page="./Delete" asp-route-id="@orden.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@functions {
+    string GetEstadoBadge(string estado)
+    {
+        return estado switch
+        {
+            "Pendiente" => "bg-secondary",
+            "En Producción" => "bg-primary",
+            "Completado" => "bg-success",
+            "Cancelado" => "bg-danger",
+            _ => "bg-light text-dark"
+        };
+    }
+}

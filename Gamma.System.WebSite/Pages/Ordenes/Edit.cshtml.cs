@@ -1,5 +1,5 @@
 using Gamma.System.Core.Dto;
-using Gamma.System.WebSite.Services;
+using Gamma.System.WebSite.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,25 +7,28 @@ namespace Gamma.System.WebSite.Pages.Ordenes;
 
 public class EditModel : PageModel
 {
-    private readonly ApiService _apiService;
+    private readonly IOrdenesService _ordenesService;
 
-    public EditModel(ApiService apiService)
+    public EditModel(IOrdenesService ordenesService)
     {
-        _apiService = apiService;
+        _ordenesService = ordenesService;
     }
 
     [BindProperty]
     public OrdenesDto Orden { get; set; } = new();
 
-    public async Task<IActionResult> OnGetAsync(int id)
+    public async Task<IActionResult> OnGetAsync(int? id)
     {
-        var orden = await _apiService.GetOrdenById(id);
-        if (orden == null)
+        if (id.HasValue)
         {
-            return NotFound();
+            var response = await _ordenesService.GetByIdAsync(id.Value);
+            if (response.Data == null)
+            {
+                return NotFound();
+            }
+            Orden = response.Data;
         }
 
-        Orden = orden;
         return Page();
     }
 
@@ -38,19 +41,25 @@ public class EditModel : PageModel
 
         try
         {
-            var success = await _apiService.UpdateOrden(Orden);
-            if (success)
+            var response = (Orden.Id == 0) 
+                ? await _ordenesService.SaveAsync(Orden)
+                : await _ordenesService.UpdateAsync(Orden);
+
+            if (response.Errors != null && response.Errors.Any())
             {
-                return RedirectToPage("./Index");
+                foreach (var error in response.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error);
+                }
+                return Page();
             }
-            
-            ModelState.AddModelError(string.Empty, "No se pudo actualizar la orden. Intente nuevamente.");
+
+            return RedirectToPage("./List");
         }
         catch (Exception ex)
         {
-            ModelState.AddModelError(string.Empty, $"Error al actualizar orden: {ex.Message}");
+            ModelState.AddModelError(string.Empty, $"Error al guardar: {ex.Message}");
+            return Page();
         }
-
-        return Page();
     }
 }

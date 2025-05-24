@@ -1,19 +1,34 @@
 @page
 @model Gamma.System.WebSite.Pages.Ordenes.DeleteModel
 
-@{
-    Layout = null;
-}
+<div class="container-fluid">
+    <h2>Eliminar Orden</h2>
+    <h3>¿Está seguro que desea eliminar esta orden?</h3>
 
-<!DOCTYPE html>
+    <div class="card mt-3">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9">@Model.Orden.Id</dd>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
+                <dt class="col-sm-3">ID Cliente:</dt>
+                <dd class="col-sm-9">@Model.Orden.IdCliente</dd>
+
+                <dt class="col-sm-3">ID Modelo:</dt>
+                <dd class="col-sm-9">@Model.Orden.IdModelo</dd>
+
+                <dt class="col-sm-3">Estado:</dt>
+                <dd class="col-sm-9">@Model.Orden.Estado</dd>
+
+                <dt class="col-sm-3">Lote:</dt>
+                <dd class="col-sm-9">@Model.Orden.Lote</dd>
+            </dl>
+
+            <form method="post">
+                <input type="hidden" asp-for="Orden.Id" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-page="./List" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
 </div>
-</body>
-</html>

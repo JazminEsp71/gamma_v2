@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using Gamma.System.WebSite.Services;
+using Gamma.System.WebSite.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 // Configuración del HttpClient
@@ -12,6 +13,7 @@ builder.Services.AddHttpClient("GammaAPI", client =>
 });
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IOrdenesService, OrdenesService>();
 builder.Services.AddSession();
 builder.Services.AddScoped<ApiService>();
 builder.Services.AddHttpContextAccessor();

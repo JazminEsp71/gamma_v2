@@ -1,4 +1,5 @@
-using Gamma.System.WebSite.Services;
+using Gamma.System.Core.Dto;
+using Gamma.System.WebSite.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -6,21 +7,31 @@ namespace Gamma.System.WebSite.Pages.Ordenes;
 
 public class DeleteModel : PageModel
 {
-    private readonly ApiService _apiService;
+    private readonly IOrdenesService _ordenesService;
 
-    public DeleteModel(ApiService apiService)
+    public DeleteModel(IOrdenesService ordenesService)
     {
-        _apiService = apiService;
+        _ordenesService = ordenesService;
     }
+
+    [BindProperty]
+    public OrdenesDto Orden { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
-        var success = await _apiService.DeleteOrden(id);
-        if (!success)
+        var response = await _ordenesService.GetByIdAsync(id);
+        if (response.Data == null)
         {
-            TempData["ErrorMessage"] = "No se pudo eliminar la orden.";
+            return NotFound();
         }
 
-        return RedirectToPage("./Index");
+        Orden = response.Data;
+        return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        await _ordenesService.DeleteAsync(Orden.Id);
+        return RedirectToPage("./List");
     }
 }

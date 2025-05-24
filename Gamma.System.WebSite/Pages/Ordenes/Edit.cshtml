@@ -1,65 +1,56 @@
-@page "{id:int}"
+@page
 @model Gamma.System.WebSite.Pages.Ordenes.EditModel
-@{
-    ViewData["Title"] = "Editar Orden";
-}
 
 <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>@ViewData["Title"]</h2>
-        <a asp-page="Index" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i> Volver
-        </a>
-    </div>
-
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <form method="post">
-                <input type="hidden" asp-for="Orden.Id" />
-
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label asp-for="Orden.IdCliente" class="form-label">ID Cliente</label>
-                        <input asp-for="Orden.IdCliente" class="form-control" />
-                        <span asp-validation-for="Orden.IdCliente" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="Orden.IdModelo" class="form-label">ID Modelo</label>
-                        <input asp-for="Orden.IdModelo" class="form-control" />
-                        <span asp-validation-for="Orden.IdModelo" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label asp-for="Orden.Estado" class="form-label">Estado</label>
-                        <select asp-for="Orden.Estado" class="form-select">
-                            <option value="Pendiente">Pendiente</option>
-                            <option value="En Producción">En Producción</option>
-                            <option value="Completado">Completado</option>
-                            <option value="Cancelado">Cancelado</option>
-                        </select>
-                        <span asp-validation-for="Orden.Estado" class="text-danger"></span>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="Orden.Lote" class="form-label">Número de Lote</label>
-                        <input asp-for="Orden.Lote" class="form-control" />
-                        <span asp-validation-for="Orden.Lote" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-save"></i> Guardar Cambios
-                    </button>
-                </div>
-            </form>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>@(Model.Orden.Id == 0 ? "Nueva Orden" : "Editar Orden")</h2>
         </div>
     </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Orden.Id" />
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Orden.IdCliente" class="form-label">ID Cliente</label>
+                <input asp-for="Orden.IdCliente" class="form-control" />
+                <span asp-validation-for="Orden.IdCliente" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Orden.IdModelo" class="form-label">ID Modelo</label>
+                <input asp-for="Orden.IdModelo" class="form-control" />
+                <span asp-validation-for="Orden.IdModelo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="Orden.Estado" class="form-label">Estado</label>
+                <select asp-for="Orden.Estado" class="form-select">
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="En Producción">En Producción</option>
+                    <option value="Completado">Completado</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+                <span asp-validation-for="Orden.Estado" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Orden.Lote" class="form-label">Lote</label>
+                <input asp-for="Orden.Lote" class="form-control" />
+                <span asp-validation-for="Orden.Lote" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./List" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
