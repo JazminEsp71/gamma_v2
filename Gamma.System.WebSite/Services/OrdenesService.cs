@@ -74,6 +74,15 @@ public class OrdenesService : IOrdenesService
 
     public async Task<Response<OrdenesDto>> SaveAsync(OrdenesDto ordenDto)
     {
+        // Validación preventiva si estás usando dropdowns con listas cargadas
+        if (ordenDto.IdCliente <= 0 || ordenDto.IdModelo <= 0)
+        {
+            return new Response<OrdenesDto>
+            {
+                Errors = new List<string> { "Cliente o modelo inválido. Verifica antes de guardar." }
+            };
+        }
+
         try
         {
             var jsonRequest = JsonConvert.SerializeObject(ordenDto);
@@ -87,14 +96,12 @@ public class OrdenesService : IOrdenesService
                 return JsonConvert.DeserializeObject<Response<OrdenesDto>>(responseContent)
                        ?? new Response<OrdenesDto>();
             }
-            else
+
+            return new Response<OrdenesDto>
             {
-                return new Response<OrdenesDto>
-                {
-                    Errors = new List<string> { "La API devolvió una respuesta no esperada" },
-                    Message = responseContent
-                };
-            }
+                Errors = new List<string> { "La API devolvió una respuesta no esperada" },
+                Message = responseContent
+            };
         }
         catch (Exception ex)
         {
@@ -104,6 +111,7 @@ public class OrdenesService : IOrdenesService
             };
         }
     }
+
 
     public async Task<Response<OrdenesDto>> UpdateAsync(OrdenesDto ordenDto)
     {
