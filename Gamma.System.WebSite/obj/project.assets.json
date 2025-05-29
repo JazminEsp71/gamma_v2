@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
+    "net8.0": {
       "BouncyCastle.NetCore/1.8.3": {
         "type": "package",
         "dependencies": {
@@ -6842,49 +6842,46 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0": [
+    "net8.0": [
       "Gamma.System.Core >= 1.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Diego\\.nuget\\packages\\": {},
-    "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages": {},
+    "C:\\Users\\Jazmin Esparza\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.WebSite\\Gamma.System.WebSite.csproj",
+      "projectUniqueName": "C:\\Users\\Jazmin Esparza\\RiderProjects\\gamma_v2\\Gamma.System.WebSite\\Gamma.System.WebSite.csproj",
       "projectName": "Gamma.System.WebSite",
-      "projectPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.WebSite\\Gamma.System.WebSite.csproj",
-      "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.WebSite\\obj\\",
+      "projectPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\gamma_v2\\Gamma.System.WebSite\\Gamma.System.WebSite.csproj",
+      "packagesPath": "C:\\Users\\Jazmin Esparza\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\gamma_v2\\Gamma.System.WebSite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+        "C:\\Users\\Jazmin Esparza\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj": {
-              "projectPath": "C:\\Users\\Diego\\Desktop\\Repos\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj"
+            "C:\\Users\\Jazmin Esparza\\RiderProjects\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj": {
+              "projectPath": "C:\\Users\\Jazmin Esparza\\RiderProjects\\gamma_v2\\Gamma.System.Core\\Gamma.System.Core.csproj"
             }
           }
         }
@@ -6898,12 +6895,11 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
@@ -6929,7 +6925,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.405/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

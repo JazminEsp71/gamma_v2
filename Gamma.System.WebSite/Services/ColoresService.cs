@@ -9,43 +9,37 @@ namespace Gamma.System.WebSite.Services;
 
 public class ColoresService : IColoresService
 {
-    private readonly string _baseUrl = "http://localhost:5023";
-    private readonly string _endpoint = "apiColores";
+    private readonly HttpClient _httpClient;
+    private const string Endpoint = "apiColores";
+
+    public ColoresService(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("GammaAPI");
+    }
 
     public async Task<Response<List<ColoresDto>>> GetAllAsync()
     {
         try
         {
-            var url = $"{_baseUrl}/{_endpoint}";
-            using var client = new HttpClient();
-            
-            var response = await client.GetAsync(url);
-            
+            var response = await _httpClient.GetAsync(Endpoint);
+
             if (!response.IsSuccessStatusCode)
             {
-                return new Response<List<ColoresDto>> 
-                { 
-                    Errors = new List<string> { $"Error: {response.StatusCode}" } 
+                return new Response<List<ColoresDto>>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
                 };
             }
-            
+
             var json = await response.Content.ReadAsStringAsync();
-            
-            if (string.IsNullOrEmpty(json))
-            {
-                return new Response<List<ColoresDto>> 
-                { 
-                    Data = new List<ColoresDto>() 
-                };
-            }
-            
-            return JsonConvert.DeserializeObject<Response<List<ColoresDto>>>(json);
+            return JsonConvert.DeserializeObject<Response<List<ColoresDto>>>(json)
+                   ?? new Response<List<ColoresDto>>() { Data = new List<ColoresDto>() };
         }
         catch (Exception ex)
         {
-            return new Response<List<ColoresDto>> 
-            { 
-                Errors = new List<string> { $"Exception: {ex.Message}" } 
+            return new Response<List<ColoresDto>>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
             };
         }
     }
@@ -54,27 +48,25 @@ public class ColoresService : IColoresService
     {
         try
         {
-            var url = $"{_baseUrl}/{_endpoint}/{id}";
-            using var client = new HttpClient();
-            
-            var response = await client.GetAsync(url);
-            
+            var response = await _httpClient.GetAsync($"{Endpoint}/{id}");
+
             if (!response.IsSuccessStatusCode)
             {
-                return new Response<ColoresDto> 
-                { 
-                    Errors = new List<string> { $"Error: {response.StatusCode}" } 
+                return new Response<ColoresDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
                 };
             }
-            
+
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json);
+            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json)
+                   ?? new Response<ColoresDto>();
         }
         catch (Exception ex)
         {
-            return new Response<ColoresDto> 
-            { 
-                Errors = new List<string> { $"Exception: {ex.Message}" } 
+            return new Response<ColoresDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
             };
         }
     }
@@ -83,30 +75,28 @@ public class ColoresService : IColoresService
     {
         try
         {
-            var url = $"{_baseUrl}/{_endpoint}";
-            using var client = new HttpClient();
-            
             var jsonRequest = JsonConvert.SerializeObject(coloresDto);
             var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-            
-            var response = await client.PostAsync(url, content);
-            
+
+            var response = await _httpClient.PostAsync(Endpoint, content);
+
             if (!response.IsSuccessStatusCode)
             {
-                return new Response<ColoresDto> 
-                { 
-                    Errors = new List<string> { $"Error: {response.StatusCode}" } 
+                return new Response<ColoresDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
                 };
             }
-            
+
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json);
+            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json)
+                   ?? new Response<ColoresDto>();
         }
         catch (Exception ex)
         {
-            return new Response<ColoresDto> 
-            { 
-                Errors = new List<string> { $"Exception: {ex.Message}" } 
+            return new Response<ColoresDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
             };
         }
     }
@@ -115,30 +105,28 @@ public class ColoresService : IColoresService
     {
         try
         {
-            var url = $"{_baseUrl}/{_endpoint}";
-            using var client = new HttpClient();
-            
             var jsonRequest = JsonConvert.SerializeObject(coloresDto);
             var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-            
-            var response = await client.PutAsync(url, content);
-            
+
+            var response = await _httpClient.PutAsync(Endpoint, content);
+
             if (!response.IsSuccessStatusCode)
             {
-                return new Response<ColoresDto> 
-                { 
-                    Errors = new List<string> { $"Error: {response.StatusCode}" } 
+                return new Response<ColoresDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
                 };
             }
-            
+
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json);
+            return JsonConvert.DeserializeObject<Response<ColoresDto>>(json)
+                   ?? new Response<ColoresDto>();
         }
         catch (Exception ex)
         {
-            return new Response<ColoresDto> 
-            { 
-                Errors = new List<string> { $"Exception: {ex.Message}" } 
+            return new Response<ColoresDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
             };
         }
     }
@@ -147,27 +135,25 @@ public class ColoresService : IColoresService
     {
         try
         {
-            var url = $"{_baseUrl}/{_endpoint}/{id}";
-            using var client = new HttpClient();
-            
-            var response = await client.DeleteAsync(url);
-            
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
+
             if (!response.IsSuccessStatusCode)
             {
-                return new Response<bool> 
-                { 
-                    Errors = new List<string> { $"Error: {response.StatusCode}" } 
+                return new Response<bool>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
                 };
             }
-            
+
             var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Response<bool>>(json);
+            return JsonConvert.DeserializeObject<Response<bool>>(json)
+                   ?? new Response<bool>();
         }
         catch (Exception ex)
         {
-            return new Response<bool> 
-            { 
-                Errors = new List<string> { $"Exception: {ex.Message}" } 
+            return new Response<bool>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
             };
         }
     }

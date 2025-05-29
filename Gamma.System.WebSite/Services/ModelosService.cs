@@ -9,67 +9,152 @@ namespace Gamma.System.WebSite.Services;
 
 public class ModelosService : IModelosService
 {
-    private readonly string _baseUrl = "http://localhost:5023";
-    private readonly string _endpoint = "apiModelos";
+    private readonly HttpClient _httpClient;
+    private const string Endpoint = "apiModelos";
+
+    public ModelosService(IHttpClientFactory httpClientFactory)
+    {
+        _httpClient = httpClientFactory.CreateClient("GammaAPI");
+    }
 
     public async Task<Response<List<ModelosDto>>> GetAllAsync()
     {
-        var url = $"{_baseUrl}/{_endpoint}";
-        using var client = new HttpClient();
-        
-        var response = await client.GetAsync(url);
-        var json = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<Response<List<ModelosDto>>>(json);
+        try
+        {
+            var response = await _httpClient.GetAsync(Endpoint);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response<List<ModelosDto>>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
+                };
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Response<List<ModelosDto>>>(json)
+                   ?? new Response<List<ModelosDto>> { Data = new List<ModelosDto>() };
+        }
+        catch (Exception ex)
+        {
+            return new Response<List<ModelosDto>>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
+            };
+        }
     }
 
     public async Task<Response<ModelosDto>> GetByIdAsync(int id)
     {
-        var url = $"{_baseUrl}/{_endpoint}/{id}";
-        using var client = new HttpClient();
-        
-        var response = await client.GetAsync(url);
-        var json = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<Response<ModelosDto>>(json);
+        try
+        {
+            var response = await _httpClient.GetAsync($"{Endpoint}/{id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response<ModelosDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
+                };
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Response<ModelosDto>>(json)
+                   ?? new Response<ModelosDto>();
+        }
+        catch (Exception ex)
+        {
+            return new Response<ModelosDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
+            };
+        }
     }
 
     public async Task<Response<ModelosDto>> SaveAsync(ModelosDto modeloDto)
     {
-        var url = $"{_baseUrl}/{_endpoint}";
-        using var client = new HttpClient();
-        
-        var jsonRequest = JsonConvert.SerializeObject(modeloDto);
-        var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-        
-        var response = await client.PostAsync(url, content);
-        var json = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<Response<ModelosDto>>(json);
+        try
+        {
+            var jsonRequest = JsonConvert.SerializeObject(modeloDto);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync(Endpoint, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response<ModelosDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
+                };
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Response<ModelosDto>>(json)
+                   ?? new Response<ModelosDto>();
+        }
+        catch (Exception ex)
+        {
+            return new Response<ModelosDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
+            };
+        }
     }
 
     public async Task<Response<ModelosDto>> UpdateAsync(ModelosDto modeloDto)
     {
-        var url = $"{_baseUrl}/{_endpoint}";
-        using var client = new HttpClient();
-        
-        var jsonRequest = JsonConvert.SerializeObject(modeloDto);
-        var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-        
-        var response = await client.PutAsync(url, content);
-        var json = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<Response<ModelosDto>>(json);
+        try
+        {
+            var jsonRequest = JsonConvert.SerializeObject(modeloDto);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync(Endpoint, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response<ModelosDto>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
+                };
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Response<ModelosDto>>(json)
+                   ?? new Response<ModelosDto>();
+        }
+        catch (Exception ex)
+        {
+            return new Response<ModelosDto>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
+            };
+        }
     }
 
     public async Task<Response<bool>> DeleteAsync(int id)
     {
-        var url = $"{_baseUrl}/{_endpoint}/{id}";
-        using var client = new HttpClient();
-        
-        var response = await client.DeleteAsync(url);
-        var json = await response.Content.ReadAsStringAsync();
-        
-        return JsonConvert.DeserializeObject<Response<bool>>(json);
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"{Endpoint}/{id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new Response<bool>
+                {
+                    Errors = new List<string> { $"Error: {response.StatusCode}" }
+                };
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Response<bool>>(json)
+                   ?? new Response<bool>();
+        }
+        catch (Exception ex)
+        {
+            return new Response<bool>
+            {
+                Errors = new List<string> { $"Exception: {ex.Message}" }
+            };
+        }
     }
 }
